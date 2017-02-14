@@ -7,3 +7,6 @@ Feature: Corgi
     When I should see in result "Введите код из смс"
     When i fill in field with sms_code
     Then I have see in result "Пользователи"
+    When I fill in field with the text "Andrey"
+    Then I have see in result "Andrey"
+

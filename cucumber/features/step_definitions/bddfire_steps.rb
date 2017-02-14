@@ -6,10 +6,12 @@ Given(/^I am on page "([^"]*)"$/) do |path_to|
 end
 
 When(/^I fill in field with the text "([^"]*)"$/) do |telephone|
-  sleep 20
-  page.save_screenshot
-  page.fill_in('phone', :with => telephone)
-end
+    if page.has_button? 'Выйти'
+      page.click_button 'Выйти'
+    else
+      page.fill_in('phone', :with => telephone)
+    end
+  end
 
 When(/^I click button "([^"]*)"$/) do |button|
   page.click_button button
@@ -25,4 +27,6 @@ end
 
 Then(/^I have see in result "([^"]*)"$/) do |string1|
   page.should have_content string1
+  sleep 10
+  page.save_screenshot
 end
