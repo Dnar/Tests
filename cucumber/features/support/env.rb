@@ -12,7 +12,7 @@ require 'rest-client'
 Capybara.configure do |config|
   config.run_server = false
   config.default_driver = (ENV['DRIVER'] || 'selenium').to_sym
-  config.javascript_driver = config.default_driver
+  config.javascript_driver = :webkit
   config.default_selector = :css
   config.default_wait_time = 15
   config.ignore_hidden_elements = true

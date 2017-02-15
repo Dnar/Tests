@@ -41,24 +41,29 @@ end
 
 When(/^I add in field the text "([^"]*)"$/) do |calltype|
   page.fill_in('name', :with => calltype)
-  page.save_screenshot
 end
 
 When(/^I select element "([^"]*)"$/) do |element|
-  #page.should have_selector 'parent'
-  page.select element, :from => 'parent'
+  page.find(".Select-control").click
+  page.find('.Select-menu-outer', :text => element).click
+  #page.find_field(element).click
 end
 
 When(/^I press button "([^"]*)"$/) do |add_calltype|
+  #page.save_screenshot
   page.click_button add_calltype
+  code = status_code
+  puts code
 end
 
 Then(/^I should see text "([^"]*)"$/) do |currentText|
-  browser.status_code(201)
   page.should have_content currentText
 end
 
 
 
 
+
+
+#'[name="parent"]~.Select-menu-outer'
 

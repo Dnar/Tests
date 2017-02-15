@@ -11,7 +11,7 @@ Feature: Corgi
 
   Scenario: Add new CallType for cleaner
     When I click link "Админка"
-    When I add in field the text "Домогательства"
+    When I add in field the text "Кража"
     When I select element "Клининг → Запрос на блокировку"
-    When I press button "onSubmit"
+    When I press button "Добавить"
     Then I should see text "Новый тип обращения"
