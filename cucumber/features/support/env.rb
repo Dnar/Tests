@@ -8,7 +8,6 @@ require 'rubocop'
 require 'axe/cucumber/step_definitions'
 require 'bddfire'
 require 'rest-client'
-#require 'capybara/mechanize/cucumber'
 
 Capybara.configure do |config|
   config.run_server = false

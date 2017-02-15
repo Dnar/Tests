@@ -5,8 +5,13 @@ Feature: Corgi
     When I fill in field with the text "9999999999"
     When I click button "Получить код"
     When I should see in result "Введите код из смс"
-    When i fill in field with sms_code
+    When I fill in field with sms_code
     Then I have see in result "Пользователи"
-    When I fill in field with the text "Andrey"
-    Then I have see in result "Andrey"
 
+
+  Scenario: Add new CallType for cleaner
+    When I click link "Админка"
+    When I add in field the text "Домогательства"
+    When I select element "Клининг → Запрос на блокировку"
+    When I press button "onSubmit"
+    Then I should see text "Новый тип обращения"
