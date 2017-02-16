@@ -45,7 +45,7 @@ end
 
 When(/^I select element "([^"]*)"$/) do |element|
   page.find(".Select-control").click
-  page.find('.Select-menu-outer', :text => element).click
+  page.find('.Select-menu-outer', :visible => false, :text => element).click
   #page.find_field(element).click
 end
 

@@ -1,3 +1,4 @@
+@corgi
 Feature: Corgi
   
   Scenario: View crm page

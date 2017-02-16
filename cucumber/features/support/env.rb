@@ -40,10 +40,6 @@ Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
-Capybara.register_driver :mechanize do |app| 
-    Capybara::Mechanize::Driver.new(app) 
-end
-
 Capybara.register_driver :browserstack do |app|
   stackToUse = ENV['BS_STACK'] || 'osx_firefox'
   json = JSON.load(open(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'browsers.json'))))
