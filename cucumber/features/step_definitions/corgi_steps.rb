@@ -30,7 +30,7 @@ Then(/^I have see in result "([^"]*)"$/) do |pagetext|
   page.should have_content pagetext
 end
 
-#################__Add new CallType for cleaner__#################
+#################__Add new CallType for cleaners__#################
 
 When(/^I click link "([^"]*)"$/) do |adminlink|
   page.click_link adminlink
@@ -39,31 +39,59 @@ When(/^I click link "([^"]*)"$/) do |adminlink|
   page.should have_content 'Родитель'
 end
 
-When(/^I add in field the text "([^"]*)"$/) do |calltype|
-  page.fill_in('name', :with => calltype)
+When(/^I add in field the text "([^"]*)"$/) do |cleanerType|
+  page.fill_in('name', :with => cleanerType)
 end
 
 When(/^I select element "([^"]*)"$/) do |element|
-  page.find(".Select-control").click
-  page.find('.Select-menu-outer', :visible => false, :text => element).click
-  #page.find_field(element).click
+  page.find('.Select-control').click
+  i = page.find('.Select-menu-outer')
+  i.first('.Select-option', :text => element).click
 end
 
 When(/^I press button "([^"]*)"$/) do |add_calltype|
-  #page.save_screenshot
   page.click_button add_calltype
-  code = status_code
-  puts code
 end
 
 Then(/^I should see text "([^"]*)"$/) do |currentText|
   page.should have_content currentText
 end
 
+#################__Create new client__#################
 
+When(/^I click button$/) do
+  page.find_button('Новый клиент').click
+end
 
+When(/^I add in field last name the text "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
+When(/^I add in field first name the text "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
+When(/^I add in field middle name the text "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
-#'[name="parent"]~.Select-menu-outer'
+When(/^I add in field phone the text "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I add in field email the text "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I check element some elements$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I press button for create user$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see some text in page$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
