@@ -93,6 +93,8 @@ GEM
     ice_nine (0.11.2)
     io-like (0.3.0)
     json (1.8.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     magic_encoding (0.0.2)
     mime-types (2.99.3)
     mini_portile2 (2.1.0)
@@ -196,6 +198,7 @@ PLATFORMS
 
 DEPENDENCIES
   bddfire
+  launchy
 
 BUNDLED WITH
    1.13.7
