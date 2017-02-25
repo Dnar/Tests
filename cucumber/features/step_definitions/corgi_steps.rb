@@ -23,7 +23,8 @@ When(/^I should see in result "([^"]*)"$/) do |smstext|
 end
 
 When(/^I fill in field with sms_code$/) do
-  page.fill_in 'code', with: JSON.parse(`curl 0.0.0.0:3002/api/support/sms_codes/list_for_phone/79999999999?limit=1`).first['code']
+  code = JSON.parse(`curl 0.0.0.0:3002/api/support/sms_codes/list_for_phone/79999999999?limit=1`).first['code']
+  page.fill_in 'code', with: code
 end
 
 Then(/^I have see in result "([^"]*)"$/) do |pagetext|
