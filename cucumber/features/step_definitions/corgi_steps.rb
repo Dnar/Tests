@@ -96,9 +96,9 @@ end
 When(/^I press button for create user$/) do
    page.find('[name=onSubmit]').click
    if page.has_content? ("Имеет неверное значение" || "Уже существует")
-    page.fill_in('phone', with: '79021233543') && page.find('[name=onSubmit]').click
+    page.fill_in('phone', with: '79251231565') && page.find('[name=onSubmit]').click
    end
-    page.save_screenshot('/Users/Dinar/Projects/Tests/cucumber/', full: true)
+    #page.save_screenshot
 end
 
 Then(/^I should see some text in page$/) do
@@ -106,5 +106,6 @@ Then(/^I should see some text in page$/) do
   page.should have_content @middlename
   page.should have_content @lastname
   page.should have_content "Новое обращение"
+  page.should have_content "Группа"
+  page.should have_content "Тема"
 end
-

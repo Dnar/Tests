@@ -59,6 +59,10 @@ Cucumber::Rake::Task.new(:client) do |t|
   t.cucumber_opts = 'features -p poltergeist --format pretty --profile html -t ~@api -t @client'
 end
 
+Cucumber::Rake::Task.new(:search) do |t|
+  t.cucumber_opts = 'features -p poltergeist --format pretty --profile html -t ~@api -t @search'
+end
+
 Cucumber::Rake::Task.new(:chrome) do |t|
   t.cucumber_opts = 'features -p chrome --format pretty --profile html -t ~@api '
 end

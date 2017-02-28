@@ -22,9 +22,9 @@ Feature: Corgi
   Scenario: Add new client
 
     When I click button 
-    When I fill in fields last name, first name and middle name with the text "Петров", "Иван", "Михайлович"
-    When I add in field phone the text "9021234343"
-    When I add in field email the text "petro33@list.ru"
+    When I fill in fields last name, first name and middle name with the text "Крюков", "Степан", "Михайлович"
+    When I add in field phone the text "9021224343"
+    When I add in field email the text "criogen@list.ru"
     When I check element some elements
     When I press button for create user
     Then I should see some text in page
