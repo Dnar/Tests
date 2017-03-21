@@ -7,16 +7,12 @@ Given(/^I am on page "([^"]*)"$/) do |path_to|
 end
 
 When(/^I fill in field with the text "([^"]*)"$/) do |telephone|
-    if page.has_button? 'Выйти'
-      page.click_button 'Выйти'
-    else
-      page.fill_in('phone', with: telephone)
-    end
-end
-
-When(/^I click button "([^"]*)"$/) do |button|
-  page.click_button button
-end
+      if page.has_css?('[name=onLogout]')
+        page.find('[name=onLogout]').click && page.find('[name=onSubmit]').click
+      else
+        page.find('[name=onSubmit]').click
+      end
+  end
 
 When(/^I should see in result "([^"]*)"$/) do |smstext|
   page.should have_content smstext
@@ -31,6 +27,7 @@ end
 
 Then(/^I have see in result "([^"]*)"$/) do |pagetextA|
   page.should have_content pagetextA
+  page.save_screenshot
 end
 
 
@@ -38,7 +35,9 @@ end
 ################__Add new CallType for cleaners__#################
 
 When(/^I click link "([^"]*)"$/) do |adminlink|
-  page.click_link('Админка')
+  sleep 3
+  page.save_screenshot
+  page.find('[name=admin]').click
   page.should have_content 'Тип пользователя'
   page.should have_content 'Название'
   page.should have_content 'Родитель'
@@ -67,8 +66,6 @@ end
 #################__Create new client__#################
 
 When(/^I click button$/) do
-  #page.save_screenshot
-  #page.should have_content "Пользователи"
   page.click_link('Пользователи')
   page.find('[name=createClient]').click
 end
@@ -100,7 +97,7 @@ end
 When(/^I press button for create user$/) do
    page.find('[name=onSubmit]').click
    if page.has_content? ("Имеет неверное значение" || "Уже существует")
-    page.fill_in('phone', with: '79254446545') && page.find('[name=onSubmit]').click
+    page.fill_in('phone', with: '79030000098') && page.find('[name=onSubmit]').click
    end
     #page.save_screenshot
 end
@@ -122,13 +119,11 @@ When(/^I select element "([^"]*)" in group$/) do |selectGroup|
   page.find('div[name=groupId]>.Select').click
   page.should have_content selectGroup
   page.find('[name="1"]').click
-  #page.save_screenshot
 end
 
 When(/^I select element "([^"]*)" in theme$/) do |selectTheme|
   page.find('div[name=themeId]>.Select').click
   page.should have_content selectTheme
-  #page.save_screenshot
   page.find('[name="126"]').click
 end
 
@@ -199,21 +194,9 @@ end
 
 When(/^I click "([^"]*)"$/) do |add_address|
   page.click_button(add_address)
-  sleep 5
+  sleep 2
 end
 
 Then (/^I shoul see full address in card$/) do
-  sleep 3
-  page.save_screenshot
-  page.should have_content "#{@city}," + " " + "#{@street} улица," + " " + "д. #{@number}," + " " + "корп. #{@housing}," + " " + "стр. #{@building}," + " " + "кв. #{@apartment},"
-  #  + "пд. #{@entrance}," + " " + "код #{@intercom}," +
-  # + "эт. #{@floor}"
-  # page.should have_content @street
-  # page.should have_content @number
-  # page.should have_content @housing
-  # page.should have_content @building
-  # page.should have_content @apartment
-  # page.should have_content @entrance
-  # page.should have_content @intercom
-  # page.should have_content @floor
+  page.should have_content "#{@city}, #{@street} улица, д. #{@number}, корп. #{@housing}, стр. #{@building}, кв. #{@apartment}, пд. #{@entrance}, код #{@intercom}, эт. #{@floor}"
 end

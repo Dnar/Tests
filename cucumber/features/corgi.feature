@@ -5,7 +5,6 @@ Feature: Corgi
 
     Given I am on page "http://localhost:7001"
     When I fill in field with the text "9999999999"
-    When I click button "Получить код"
     When I should see in result "Введите код из смс"
     When I fill in field with sms_code
     Then I have see in result "Пользователи"
@@ -21,9 +20,9 @@ Feature: Corgi
   Scenario: Add new client
 
     When I click button
-    When I fill in fields last name, first name and middle name with the text "Иванов", "Петр", "Михайлович"
+    When I fill in fields last name, first name and middle name with the text "Мордашов", "Григорий", "Моисеевич"
     When I add in field phone the text "9051224346"
-    When I add in field email the text "5432432@list.ru"
+    When I add in field email the text "kris11@list.ru"
     When I check element some elements
     When I press button for create user
     Then I should see some text in page
