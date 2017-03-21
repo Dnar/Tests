@@ -8,6 +8,11 @@ require 'rubocop'
 require 'axe/cucumber/step_definitions'
 require 'bddfire'
 require 'rest-client'
+require 'capybara-screenshot/cucumber'
+
+Capybara::Screenshot.autosave_on_failure = true
+Capybara::Screenshot.webkit_options = { width: 1024, height: 768 }
+
 
 Capybara.configure do |config|
   config.run_server = false

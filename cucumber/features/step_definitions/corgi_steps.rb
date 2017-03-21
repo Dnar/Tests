@@ -121,7 +121,7 @@ end
 
 
 
-#################__Create new client__#################
+#################__Add new address for client__#################
 
 When(/^I select element "([^"]*)" in group$/) do |selectGroup|
   page.find('div[name=groupId]>.Select').click

@@ -55,6 +55,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.14)
+      capybara (>= 1.0, < 3)
+      launchy
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.0.0)
@@ -95,6 +98,8 @@ GEM
     ice_nine (0.11.2)
     io-like (0.3.0)
     json (1.8.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     magic_encoding (0.0.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -201,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   bddfire
+  capybara-screenshot
   ffaker
 
 BUNDLED WITH
