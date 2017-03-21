@@ -1,4 +1,6 @@
 require 'bddfire'
+require 'ffaker'
+
 
 #################__Login to CRM__#################
 
@@ -27,7 +29,6 @@ end
 
 Then(/^I have see in result "([^"]*)"$/) do |pagetextA|
   page.should have_content pagetextA
-  page.save_screenshot
 end
 
 
@@ -36,7 +37,6 @@ end
 
 When(/^I click link "([^"]*)"$/) do |adminlink|
   sleep 3
-  page.save_screenshot
   page.find('[name=admin]').click
   page.should have_content 'Тип пользователя'
   page.should have_content 'Название'
@@ -65,28 +65,32 @@ end
 
 #################__Create new client__#################
 
+
 When(/^I click button$/) do
   page.click_link('Пользователи')
   page.find('[name=createClient]').click
 end
 
-When(/^I fill in fields last name, first name and middle name with the text "([^"]*)", "([^"]*)", "([^"]*)"$/) do |lastname, firstname, middlename|
-  @lastname = lastname
-  @firstname = firstname
-  @middlename = middlename
+When(/^I fill in fields last name, first name and middle name$/) do
+  @lastname = FFaker::NameRU.last_name
+  @firstname = FFaker::NameRU.first_name
+  @middlename = FFaker::NameRU.patronymic
 
-  page.fill_in('lastName', with: lastname)
-  page.fill_in('firstName',  with: firstname)
-  page.fill_in('middleName', with: middlename)
+  page.fill_in('lastName', with: @lastname)
+  page.fill_in('firstName',  with: @firstname)
+  page.fill_in('middleName', with: @middlename)
 end
 
-When(/^I add in field phone the text "([^"]*)"$/) do |phone|
-  page.fill_in 'phone', with: phone
+When(/^I add in field phone$/) do
+  @wrongphone = '7' + 9.times.map { rand(10) }.join
+
+  page.fill_in 'phone', with: @wrongphone
 end
 
-When(/^I add in field email the text "([^"]*)"$/) do |email|
-  page.fill_in 'email', with: email
-  #page.save_screenshot('/Users/Dinar/Projects/Tests/cucumber/', full: true)
+When(/^I add in field email$/) do
+  @email = FFaker::Internet.free_email
+
+  page.fill_in 'email', with: @email
 end
 
 When(/^I check element some elements$/) do
@@ -95,14 +99,18 @@ When(/^I check element some elements$/) do
 end
 
 When(/^I press button for create user$/) do
+  @phone = '7' + 10.times.map { rand(10) }.join
+
    page.find('[name=onSubmit]').click
    if page.has_content? ("Имеет неверное значение" || "Уже существует")
-    page.fill_in('phone', with: '79030000098') && page.find('[name=onSubmit]').click
+    page.fill_in('phone', with: @phone) && page.find('[name=onSubmit]').click
    end
-    #page.save_screenshot
+    page.save_screenshot('/Users/Dinar/Projects/Tests/cucumber/tmp/screen.jpg', full: true)
 end
 
 Then(/^I should see some text in page$/) do
+  sleep 3
+  #page.save_screenshot
   page.should have_content @firstname
   page.should have_content @middlename
   page.should have_content @lastname
@@ -152,39 +160,39 @@ When(/^I add in field street with text "([^"]*)"$/) do |street|
   page.fill_in('street', with: street)
 end
 
-When(/^I add in field number with text "([^"]*)"$/) do |number|
-  @number = number
-  page.fill_in('number', with: number)
+When(/^I add in field number$/) do
+  @number = FFaker::AddressRU.street_number
+  page.fill_in('number', with: @number)
 end
 
-When(/^I add in field housing with text "([^"]*)"$/) do |housing|
-  @housing = housing
-  page.fill_in('housing', with: housing)
+When(/^I add in field housing$/) do
+  @housing = FFaker::AddressRU.street_number
+  page.fill_in('housing', with: @housing)
 end
 
-When(/^I add in field building with text "([^"]*)"$/) do |building|
-  @building = building
-  page.fill_in('building', with: building)
+When(/^I add in field building$/) do
+  @building = FFaker::AddressRU.street_number
+  page.fill_in('building', with: @building)
 end
 
-When(/^I add in field apartment with text "([^"]*)"$/) do |apartment|
-  @apartment = apartment
-  page.fill_in('apartment', with: apartment)
+When(/^I add in field apartment$/) do
+  @apartment = FFaker::AddressRU.street_number
+  page.fill_in('apartment', with: @apartment)
 end
 
-When(/^I add in field entrance with text "([^"]*)"$/) do |entrance|
-  @entrance = entrance
-  page.fill_in('entrance', with: entrance)
+When(/^I add in field entrance$/) do
+  @entrance = FFaker::AddressRU.street_number
+  page.fill_in('entrance', with: @entrance)
 end
 
-When(/^I add in field intercom with text "([^"]*)"$/) do |intercom|
-  @intercom = intercom
-  page.fill_in('intercom', with: intercom)
+When(/^I add in field intercom$/) do
+  @intercom = FFaker::AddressRU.building_number
+  page.fill_in('intercom', with: @intercom)
 end
 
-When(/^I add in field floor with text "([^"]*)"$/) do |floor|
-  @floor = floor
-  page.fill_in('floor', with: floor)
+When(/^I add in field floor$/) do
+  @floor = FFaker::AddressRU.street_number
+  page.fill_in('floor', with: @floor)
 end
 
 # When(/^I add in field comment with text "([^"]*)"$/) do |comment|

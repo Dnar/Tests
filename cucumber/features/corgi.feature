@@ -20,9 +20,9 @@ Feature: Corgi
   Scenario: Add new client
 
     When I click button
-    When I fill in fields last name, first name and middle name with the text "Мордашов", "Григорий", "Моисеевич"
-    When I add in field phone the text "9051224346"
-    When I add in field email the text "kris11@list.ru"
+    When I fill in fields last name, first name and middle name
+    When I add in field phone
+    When I add in field email
     When I check element some elements
     When I press button for create user
     Then I should see some text in page
@@ -35,12 +35,12 @@ Feature: Corgi
     When I should see in window "Город", "Улица", "Дом", "Корпус", "Строение", "Квартира", "Подъезд", "Домофон", "Этаж"
     When I add in field city with text "Москва"
     When I add in field street with text "Бойцовая"
-    When I add in field number with text "14"
-    When I add in field housing with text "1"
-    When I add in field building with text "2"
-    When I add in field apartment with text "666"
-    When I add in field entrance with text "3"
-    When I add in field intercom with text "4в3232"
-    When I add in field floor with text "16"
+    When I add in field number
+    When I add in field housing
+    When I add in field building
+    When I add in field apartment
+    When I add in field entrance
+    When I add in field intercom
+    When I add in field floor
     When I click "Создать обращение"
     Then I shoul see full address in card
