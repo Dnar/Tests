@@ -82,7 +82,7 @@ When(/^I fill in fields last name, first name and middle name$/) do
 end
 
 When(/^I add in field phone$/) do
-  @wrongphone = '7' + 9.times.map { rand(10) }.join
+  @wrongphone = '7' + '9' + 8.times.map { rand(10) }.join
 
   page.fill_in 'phone', with: @wrongphone
 end
@@ -99,7 +99,7 @@ When(/^I check element some elements$/) do
 end
 
 When(/^I press button for create user$/) do
-  @phone = '7' + 10.times.map { rand(10) }.join
+  @phone = '7' + '9' + 9.times.map { rand(10) }.join
 
    page.find('[name=onSubmit]').click
    if page.has_content? ("Имеет неверное значение" || "Уже существует")
