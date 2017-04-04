@@ -22,6 +22,7 @@ Capybara.configure do |config|
   config.default_selector = :css
   config.default_wait_time = 15
   config.ignore_hidden_elements = true
+  config.app_host = "http://localhost:7001"
 end
 
 

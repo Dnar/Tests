@@ -67,7 +67,7 @@ end
 #################__Create new client__#################
 
 
-When(/^I click button$/) do
+When(/^I click button New client$/) do
   page.click_link('Пользователи')
   page.find('[name=createClient]').click
 end
@@ -106,7 +106,6 @@ When(/^I press button for create user$/) do
    if page.has_content? ("Имеет неверное значение" || "Уже существует")
     page.fill_in('phone', with: @phone) && page.find('[name=onSubmit]').click
    end
-    #page.save_screenshot('/Users/Dinar/Projects/Tests/cucumber/tmp/screen.jpg', full: true)
 end
 
 Then(/^I should see some text in page$/) do
@@ -207,5 +206,13 @@ When(/^I click "([^"]*)"$/) do |add_address|
 end
 
 Then (/^I shoul see full address in card$/) do
-  page.should have_content "#{@city}, #{@street} улица, д. #{@number}, корп. #{@housing}, стр. #{@building}, кв. #{@apartment}, пд. #{@entrance}, код #{@intercom}, эт. #{@floor}"
+  page.should have_content @city
+  page.should have_content @street
+  page.should have_content @number
+  page.should have_content @housing
+  page.should have_content @building
+  page.should have_content @apartment
+  page.should have_content @entrance
+  page.should have_content @intercom
+  page.should have_content @floor
 end

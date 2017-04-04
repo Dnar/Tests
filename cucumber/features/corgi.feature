@@ -19,7 +19,7 @@ Feature: Corgi
 
   Scenario: Add new client
 
-    When I click button
+    When I click button New client
     When I fill in fields last name, first name and middle name
     When I add in field phone
     When I add in field email
