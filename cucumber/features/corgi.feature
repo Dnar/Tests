@@ -3,7 +3,7 @@ Feature: Corgi
 
   Scenario: View crm page
 
-    Given I am on page "http://localhost:7001"
+    Given I am on crm page
     When I fill in field with the text "9999999999"
     When I should see in result "Введите код из смс"
     When I fill in field with sms_code

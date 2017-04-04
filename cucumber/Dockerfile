@@ -1,6 +1,6 @@
-FROM ruby:latest
+FROM ruby:2.3.3
 
-MAINTAINER bddfire@bddire.co.uk
+MAINTAINER dinar@qlean.ru
 
 ENV PHANTOM_JS="phantomjs-2.1.1-linux-x86_64"
 
@@ -16,9 +16,10 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   nodejs
 
-RUN mkdir -p /opt/bddfire
-WORKDIR /opt/bddfire
+RUN mkdir -p /autotests
+WORKDIR /autotests
 
 
 RUN gem install bundler
 RUN gem install nokogiri
+RUN gem install bddfire

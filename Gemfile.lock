@@ -54,6 +54,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.14)
+      capybara (>= 1.0, < 3)
+      launchy
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.0.0)
@@ -84,6 +87,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dumb_delegator (0.8.0)
     equalizer (0.0.11)
+    ffaker (2.5.0)
     ffi (1.9.10)
     gherkin (3.2.0)
     hashie (3.4.6)
@@ -198,6 +202,8 @@ PLATFORMS
 
 DEPENDENCIES
   bddfire
+  capybara-screenshot
+  ffaker
   launchy
 
 BUNDLED WITH

@@ -4,8 +4,9 @@ require 'ffaker'
 
 #################__Login to CRM__#################
 
-Given(/^I am on page "([^"]*)"$/) do |path_to|
-  page.visit path_to
+Given(/^I am on crm page$/) do
+  @home_page = HomePage.new(Capybara.current_session)
+  @home_page.visit_home_page
 end
 
 When(/^I fill in field with the text "([^"]*)"$/) do |telephone|
@@ -105,7 +106,7 @@ When(/^I press button for create user$/) do
    if page.has_content? ("Имеет неверное значение" || "Уже существует")
     page.fill_in('phone', with: @phone) && page.find('[name=onSubmit]').click
    end
-    page.save_screenshot('/Users/Dinar/Projects/Tests/cucumber/tmp/screen.jpg', full: true)
+    #page.save_screenshot('/Users/Dinar/Projects/Tests/cucumber/tmp/screen.jpg', full: true)
 end
 
 Then(/^I should see some text in page$/) do

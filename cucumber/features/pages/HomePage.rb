@@ -11,7 +11,7 @@ class HomePage
   end
 
   def visit_home_page
-    @session.visit('http://localhost:7001')
+    @session.visit(ENV['CRM_PAGE'])
   end
 end
 

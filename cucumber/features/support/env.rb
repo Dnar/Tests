@@ -10,6 +10,7 @@ require 'bddfire'
 require 'rest-client'
 require 'capybara-screenshot/cucumber'
 
+
 Capybara::Screenshot.autosave_on_failure = true
 Capybara::Screenshot.webkit_options = { width: 1024, height: 768 }
 
@@ -22,6 +23,7 @@ Capybara.configure do |config|
   config.default_wait_time = 15
   config.ignore_hidden_elements = true
 end
+
 
 Capybara.register_driver :selenium do |app|
   profile = Selenium::WebDriver::Firefox::Profile.new

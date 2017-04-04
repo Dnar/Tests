@@ -4,12 +4,20 @@ require 'nokogiri'
 
 #################__Login to Qlean__#################
 
+Given(/^I am on qlean page$/) do
+  @home_page = HomePage.new(Capybara.current_session)
+  @home_page.visit_home_page
+end
+
+
 When(/^I change room and bathroom$/) do
+  @phone = '7' + '9' + 9.times.map { rand(10) }.join
+
   page.should have_content 'Расскажите о квартире'
   f = page.first('form[data-test-id="orderCreationForm"]')
   f.find('[data-test-id="counterDecrementButton.serviceId1"]').click
   f.should have_content '1-комнатная'
-  f.fill_in('phone', :with => '9256774343')
+  f.fill_in('phone', :with => @phone)
   f.find('[data-test-id="orderCreationForm.submitButton"]').click
   sleep 2
 end
@@ -28,7 +36,7 @@ When(/^I fill in popup field with sms_code$/) do
     end
   end
 
-Then(/^I should see some text$/) do
+When(/^I should see some text$/) do
     if current_url.split('/').last == 'additional'
       puts 'success'
     else
@@ -40,4 +48,3 @@ Then(/^I should see some text$/) do
   page.should have_content 'Способ оплаты'
   page.should have_content 'Уборка квартиры c 1 жилой и 1 ванной комнатой'
 end
-
