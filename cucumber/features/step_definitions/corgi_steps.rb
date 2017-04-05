@@ -22,9 +22,13 @@ When(/^I should see in result "([^"]*)"$/) do |smstext|
 end
 
 When(/^I fill in field with sms_code$/) do
+
+  sms_url = ENV['AUTH_HOST'] || '0.0.0.0:3002'
+
   code = JSON.parse(
-    `curl 0.0.0.0:3002/api/support/sms_codes/list_for_phone/79999999999?limit=1`
+    `curl #{sms_url}/api/support/sms_codes/list_for_phone/79999999999?limit=1`
     ).first['code']
+
   page.fill_in 'code', with: code
 end
 

@@ -11,7 +11,7 @@ class HomePage
   end
 
   def visit_home_page
-    @session.visit(ENV['CRM_PAGE'])
+    @session.visit(ENV['PAGE'])
   end
 end
 
