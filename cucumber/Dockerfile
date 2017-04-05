@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /autotests
 WORKDIR /autotests
 
+ADD Gemfile* ./
+RUN bundle install
 
-RUN gem install bundler
-RUN gem install nokogiri
-RUN gem install bddfire
+COPY . /autotests
